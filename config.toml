@@ -1,0 +1,55 @@
+baseURL = "https://rinserepeatlabs.com/"
+languageCode = "en-us"
+title = "Rinse Repeat Labs | Software Development"
+
+# Disable default RSS/sitemap for cleaner output
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  tagline = "Turn Your Software Idea Into Reality"
+  description = "Premium software development for mobile, web, and desktop applications. We bring your ideas to life with end-to-end development services."
+  email = "rinserepeatlabs@gmail.com"
+  phone = ""
+  consultationFee = "$199"
+
+  # Replace these with your actual endpoints
+  formspreeEndpoint = "YOUR_FORMSPREE_ENDPOINT"
+  stripePaymentLink = "YOUR_STRIPE_PAYMENT_LINK"
+
+[params.social]
+  twitter = ""
+  linkedin = ""
+  github = ""
+
+[menu]
+  [[menu.main]]
+    identifier = "services"
+    name = "Services"
+    url = "/services/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "portfolio"
+    name = "Portfolio"
+    url = "/portfolio/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "submit"
+    name = "Submit Your Idea"
+    url = "/submit-idea/"
+    weight = 4
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[build]
+  writeStats = true

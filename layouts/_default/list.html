@@ -1,0 +1,46 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container-custom">
+    <header class="text-center mb-12 md:mb-16">
+      <h1 class="mb-4">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}
+      <p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    {{ if .Content }}
+    <div class="prose prose-lg prose-slate dark:prose-invert max-w-3xl mx-auto mb-12">
+      {{ .Content }}
+    </div>
+    {{ end }}
+
+    {{ if .Pages }}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {{ range .Pages }}
+      <article class="card">
+        {{ with .Params.image }}
+        <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-48 object-cover">
+        {{ end }}
+        <div class="p-6">
+          <h2 class="text-xl font-semibold mb-2">
+            <a href="{{ .Permalink }}" class="hover:text-primary-500 dark:hover:text-primary-400">
+              {{ .Title }}
+            </a>
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400">
+            {{ .Summary | truncate 120 }}
+          </p>
+          <a href="{{ .Permalink }}" class="inline-flex items-center mt-4 text-primary-500 dark:text-primary-400 font-medium hover:underline">
+            Read more
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" class="scroll-smooth">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="theme-transition min-h-screen flex flex-col">
+  {{ partial "header.html" . }}
+
+  <main class="flex-grow">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  <!-- Dark Mode Script -->
+  <script>
+    (function() {
+      function getThemePreference() {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function setTheme(theme) {
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        localStorage.setItem('theme', theme);
+      }
+
+      // Set initial theme
+      setTheme(getThemePreference());
+
+      // Expose toggle function globally
+      window.toggleTheme = function() {
+        const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      };
+
+      // Listen for system preference changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    })();
+  </script>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+          const expanded = menuButton.getAttribute('aria-expanded') === 'true';
+          menuButton.setAttribute('aria-expanded', !expanded);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

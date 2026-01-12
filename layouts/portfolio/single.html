@@ -1,0 +1,173 @@
+{{ define "main" }}
+<article>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 py-16 md:py-24 theme-transition">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="mb-8">
+          <a href="/portfolio/" class="text-primary-500 dark:text-primary-400 hover:underline text-sm">
+            ← Back to Portfolio
+          </a>
+        </nav>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          {{ range .Params.platforms }}
+          <span class="px-3 py-1 text-sm font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full">
+            {{ . }}
+          </span>
+          {{ end }}
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+          {{ .Title }}
+        </h1>
+
+        {{ with .Params.tagline }}
+        <p class="text-xl text-slate-600 dark:text-slate-400 mb-8">
+          {{ . }}
+        </p>
+        {{ end }}
+
+        <!-- Store Links -->
+        {{ if or .Params.appStoreUrl .Params.playStoreUrl .Params.webUrl }}
+        <div class="flex flex-wrap gap-4">
+          {{ with .Params.appStoreUrl }}
+          <a href="{{ . }}" target="_blank" rel="noopener" class="btn btn-secondary">
+            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            App Store
+          </a>
+          {{ end }}
+          {{ with .Params.playStoreUrl }}
+          <a href="{{ . }}" target="_blank" rel="noopener" class="btn btn-secondary">
+            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 20.5v-17c0-.83.67-1.5 1.5-1.5.31 0 .61.1.86.28l14.5 8.5c.67.39.67 1.05 0 1.44l-14.5 8.5c-.25.18-.55.28-.86.28-.83 0-1.5-.67-1.5-1.5z"/>
+            </svg>
+            Play Store
+          </a>
+          {{ end }}
+          {{ with .Params.webUrl }}
+          <a href="{{ . }}" target="_blank" rel="noopener" class="btn btn-secondary">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+            </svg>
+            Visit Website
+          </a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Image -->
+  {{ with .Params.image }}
+  <section class="bg-slate-100 dark:bg-slate-800 theme-transition">
+    <div class="container-custom py-8">
+      <div class="max-w-5xl mx-auto">
+        <img src="{{ . }}" alt="{{ $.Title }}" class="w-full rounded-2xl shadow-2xl">
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <!-- Content -->
+  <section class="section bg-white dark:bg-slate-900 theme-transition">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <div class="prose prose-lg prose-slate dark:prose-invert max-w-none">
+            {{ .Content }}
+          </div>
+
+          <!-- Gallery -->
+          {{ with .Params.gallery }}
+          <div class="mt-12">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Screenshots</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {{ range . }}
+              <img src="{{ . }}" alt="Screenshot" class="rounded-lg shadow-lg">
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <div class="sticky top-24 space-y-8">
+            <!-- Project Details -->
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6">
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Project Details</h3>
+              <dl class="space-y-4">
+                {{ with .Params.client }}
+                <div>
+                  <dt class="text-sm text-slate-500 dark:text-slate-400">Client</dt>
+                  <dd class="text-slate-900 dark:text-white font-medium">{{ . }}</dd>
+                </div>
+                {{ end }}
+                {{ with .Params.platforms }}
+                <div>
+                  <dt class="text-sm text-slate-500 dark:text-slate-400">Platforms</dt>
+                  <dd class="text-slate-900 dark:text-white font-medium">{{ delimit . ", " }}</dd>
+                </div>
+                {{ end }}
+                {{ with .Params.timeline }}
+                <div>
+                  <dt class="text-sm text-slate-500 dark:text-slate-400">Timeline</dt>
+                  <dd class="text-slate-900 dark:text-white font-medium">{{ . }}</dd>
+                </div>
+                {{ end }}
+                {{ with .Params.year }}
+                <div>
+                  <dt class="text-sm text-slate-500 dark:text-slate-400">Year</dt>
+                  <dd class="text-slate-900 dark:text-white font-medium">{{ . }}</dd>
+                </div>
+                {{ end }}
+              </dl>
+            </div>
+
+            <!-- Tech Stack -->
+            {{ with .Params.tech }}
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6">
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Tech Stack</h3>
+              <div class="flex flex-wrap gap-2">
+                {{ range . }}
+                <span class="px-3 py-1 text-sm bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-full">
+                  {{ . }}
+                </span>
+                {{ end }}
+              </div>
+            </div>
+            {{ end }}
+
+            <!-- Testimonial -->
+            {{ with .Params.testimonial }}
+            <div class="bg-primary-50 dark:bg-primary-900/20 rounded-2xl p-6">
+              <blockquote class="text-slate-700 dark:text-slate-300 italic mb-4">
+                "{{ .quote }}"
+              </blockquote>
+              <div class="flex items-center">
+                <div class="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center text-white font-semibold text-sm">
+                  {{ substr .author 0 2 | upper }}
+                </div>
+                <div class="ml-3">
+                  <div class="font-medium text-slate-900 dark:text-white text-sm">{{ .author }}</div>
+                  <div class="text-sm text-slate-500 dark:text-slate-400">{{ .role }}</div>
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  {{ partial "cta-section.html" . }}
+</article>
+{{ end }}

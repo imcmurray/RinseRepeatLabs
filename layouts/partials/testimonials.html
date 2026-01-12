@@ -1,0 +1,83 @@
+<section class="section bg-slate-50 dark:bg-slate-800 theme-transition">
+  <div class="container-custom">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+        What Our Clients Say
+      </h2>
+      <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        Don't just take our word for it — hear from the founders and teams we've worked with.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg">
+        <div class="flex items-center mb-4">
+          {{ range seq 5 }}
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          {{ end }}
+        </div>
+        <blockquote class="text-slate-600 dark:text-slate-300 mb-6">
+          "Rinse Repeat Labs transformed our rough concept into a polished app that our users love. Their attention to detail and transparent process made the entire journey smooth."
+        </blockquote>
+        <div class="flex items-center">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white font-semibold">
+            SK
+          </div>
+          <div class="ml-4">
+            <div class="font-semibold text-slate-900 dark:text-white">Sarah Kim</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400">CEO, TimeFlow</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg">
+        <div class="flex items-center mb-4">
+          {{ range seq 5 }}
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          {{ end }}
+        </div>
+        <blockquote class="text-slate-600 dark:text-slate-300 mb-6">
+          "The revenue-share model was perfect for us as a startup. We got a world-class app without the upfront capital, and their monthly reports keep us informed."
+        </blockquote>
+        <div class="flex items-center">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white font-semibold">
+            MC
+          </div>
+          <div class="ml-4">
+            <div class="font-semibold text-slate-900 dark:text-white">Marcus Chen</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400">Founder, FitPulse</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-lg">
+        <div class="flex items-center mb-4">
+          {{ range seq 5 }}
+          <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          {{ end }}
+        </div>
+        <blockquote class="text-slate-600 dark:text-slate-300 mb-6">
+          "From our initial consultation to the App Store launch, the team was incredibly professional. Our e-commerce platform exceeded all expectations."
+        </blockquote>
+        <div class="flex items-center">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white font-semibold">
+            EJ
+          </div>
+          <div class="ml-4">
+            <div class="font-semibold text-slate-900 dark:text-white">Emma Johnson</div>
+            <div class="text-sm text-slate-500 dark:text-slate-400">CTO, ShopWave</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

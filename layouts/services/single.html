@@ -1,0 +1,31 @@
+{{ define "main" }}
+<article>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 py-16 md:py-24 theme-transition">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+          {{ .Title }}
+        </h1>
+        {{ with .Params.subtitle }}
+        <p class="text-xl text-slate-600 dark:text-slate-400">
+          {{ . }}
+        </p>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section bg-white dark:bg-slate-900 theme-transition">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto prose prose-lg prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-a:text-primary-500 dark:prose-a:text-primary-400">
+        {{ .Content }}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  {{ partial "cta-section.html" . }}
+</article>
+{{ end }}

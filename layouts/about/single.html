@@ -1,0 +1,260 @@
+{{ define "main" }}
+<article>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 py-16 md:py-24 theme-transition">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+          {{ .Title }}
+        </h1>
+        <p class="text-xl text-slate-600 dark:text-slate-400">
+          {{ .Params.subtitle }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section bg-white dark:bg-slate-900 theme-transition">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Our Mission</h2>
+            <p class="text-lg text-slate-600 dark:text-slate-400 mb-6">
+              At Rinse Repeat Labs, we believe great software shouldn't be limited to those with deep pockets or technical expertise. Our mission is to democratize software development by providing world-class development services with flexible funding options.
+            </p>
+            <p class="text-lg text-slate-600 dark:text-slate-400">
+              We partner with entrepreneurs, startups, and established businesses to turn their visions into reality — from initial concept through launch and beyond.
+            </p>
+          </div>
+          <div class="bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl p-8 text-white">
+            <h3 class="text-2xl font-bold mb-4">Our Values</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <svg class="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <div>
+                  <strong class="block">Transparency</strong>
+                  <span class="text-primary-100">No hidden fees, clear communication, honest timelines.</span>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <div>
+                  <strong class="block">Quality</strong>
+                  <span class="text-primary-100">We build software we're proud of, every single time.</span>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <div>
+                  <strong class="block">Partnership</strong>
+                  <span class="text-primary-100">Your success is our success, especially with revenue-share.</span>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <div>
+                  <strong class="block">Innovation</strong>
+                  <span class="text-primary-100">Modern technologies, best practices, cutting-edge solutions.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section bg-slate-50 dark:bg-slate-800 theme-transition">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">
+          Why Choose Rinse Repeat Labs?
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-8">
+            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">Flexible Funding</h3>
+            <p class="text-slate-600 dark:text-slate-400">
+              Whether you have budget ready or prefer revenue-sharing, we have options that work for your situation.
+            </p>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-8">
+            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">End-to-End Expertise</h3>
+            <p class="text-slate-600 dark:text-slate-400">
+              From concept to launch to ongoing support, we handle every aspect of bringing your software to market.
+            </p>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-8">
+            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">Modern Technology</h3>
+            <p class="text-slate-600 dark:text-slate-400">
+              We use the latest frameworks and best practices to build fast, secure, and scalable software.
+            </p>
+          </div>
+
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-8">
+            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">Dedicated Partnership</h3>
+            <p class="text-slate-600 dark:text-slate-400">
+              We're invested in your success. With revenue-share options, we literally succeed when you succeed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section bg-white dark:bg-slate-900 theme-transition">
+    <div class="container-custom">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white text-center mb-4">
+          Meet the Team
+        </h2>
+        <p class="text-lg text-slate-600 dark:text-slate-400 text-center mb-12 max-w-2xl mx-auto">
+          Our diverse team brings together expertise in design, engineering, and business to deliver exceptional results.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Team Member 1 -->
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-3xl font-bold">
+              JD
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Jane Doe</h3>
+            <p class="text-primary-500 dark:text-primary-400 mb-2">Founder & CEO</p>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              10+ years in software development. Previously led engineering at major tech companies.
+            </p>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-3xl font-bold">
+              JS
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 dark:text-white">John Smith</h3>
+            <p class="text-primary-500 dark:text-primary-400 mb-2">CTO</p>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              Full-stack architect with expertise in mobile, web, and cloud infrastructure.
+            </p>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-3xl font-bold">
+              AL
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Alex Lee</h3>
+            <p class="text-primary-500 dark:text-primary-400 mb-2">Head of Design</p>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              Award-winning designer specializing in mobile and web user experiences.
+            </p>
+          </div>
+
+          <!-- Team Member 4 -->
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-3xl font-bold">
+              MP
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Maria Patel</h3>
+            <p class="text-primary-500 dark:text-primary-400 mb-2">Lead Developer</p>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              Expert in React Native, Flutter, and cross-platform development.
+            </p>
+          </div>
+
+          <!-- Team Member 5 -->
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-3xl font-bold">
+              DK
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 dark:text-white">David Kim</h3>
+            <p class="text-primary-500 dark:text-primary-400 mb-2">Backend Engineer</p>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              Specializes in scalable architectures, APIs, and database optimization.
+            </p>
+          </div>
+
+          <!-- Team Member 6 -->
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-3xl font-bold">
+              SR
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Sarah Rodriguez</h3>
+            <p class="text-primary-500 dark:text-primary-400 mb-2">Project Manager</p>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              Keeps projects on track and ensures clear communication with clients.
+            </p>
+          </div>
+        </div>
+
+        <p class="text-center text-slate-500 dark:text-slate-400 mt-8 text-sm">
+          Plus a network of talented contractors and specialists we bring in based on project needs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section bg-slate-50 dark:bg-slate-800 theme-transition">
+    <div class="container-custom">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">
+          Get in Touch
+        </h2>
+        <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
+          Have questions? Want to learn more about how we work? We'd love to hear from you.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <a href="mailto:{{ .Site.Params.email }}" class="btn btn-primary">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            {{ .Site.Params.email }}
+          </a>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-400">
+          Or, if you're ready to get started, <a href="/submit-idea/" class="text-primary-500 dark:text-primary-400 hover:underline font-medium">submit your idea</a> directly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  {{ partial "cta-section.html" . }}
+</article>
+{{ end }}
