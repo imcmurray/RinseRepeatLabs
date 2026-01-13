@@ -57,6 +57,8 @@ jobs:
           HUGO_FORMSPREE_ENDPOINT: ${{ secrets.HUGO_FORMSPREE_ENDPOINT }}
           HUGO_STRIPE_PAYMENT_LINK: ${{ secrets.HUGO_STRIPE_PAYMENT_LINK }}
           HUGO_BUILD_COMMIT: ${{ github.sha }}
+          HUGO_EMAIL: ${{ vars.HUGO_EMAIL }}
+          HUGO_CONSULTATION_FEE: ${{ vars.HUGO_CONSULTATION_FEE }}
         run: |
           hugo \
             --gc \

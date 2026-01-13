@@ -30,7 +30,7 @@
             </div>
             <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">Pay Consultation Fee</h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm">
-              Secure your spot with a {{ .Site.Params.consultationFee }} non-refundable consultation fee.
+              Secure your spot with a {{ getenv "HUGO_CONSULTATION_FEE" | default .Site.Params.consultationFee }} non-refundable consultation fee.
             </p>
           </div>
 
@@ -63,7 +63,7 @@
             Why a Consultation Fee?
           </h3>
           <p class="text-slate-600 dark:text-slate-400 mb-4">
-            The {{ .Site.Params.consultationFee }} consultation fee serves two purposes:
+            The {{ getenv "HUGO_CONSULTATION_FEE" | default .Site.Params.consultationFee }} consultation fee serves two purposes:
           </p>
           <ul class="space-y-2 text-slate-600 dark:text-slate-400">
             <li class="flex items-start">
@@ -87,7 +87,7 @@
           <div>
             <div class="bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl p-8 text-white h-full">
               <h3 class="text-2xl font-bold mb-4">Step 1: Consultation Fee</h3>
-              <div class="text-5xl font-bold mb-2">{{ .Site.Params.consultationFee }}</div>
+              <div class="text-5xl font-bold mb-2">{{ getenv "HUGO_CONSULTATION_FEE" | default .Site.Params.consultationFee }}</div>
               <p class="text-primary-100 mb-6">One-time, non-refundable</p>
 
               <ul class="space-y-3 mb-8">

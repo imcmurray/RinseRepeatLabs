@@ -127,7 +127,7 @@ Pay little to no upfront fee, and we share revenue equally. We're fully invested
 
 Ready to bring your idea to life? The first step is a paid consultation.
 
-For **$199** (non-refundable), you'll receive:
+For **{{< consultation-fee >}}** (non-refundable), you'll receive:
 - 1-hour consultation with our team
 - Detailed development plan
 - Project timeline

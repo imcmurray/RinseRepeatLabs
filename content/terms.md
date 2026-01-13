@@ -82,7 +82,7 @@ We reserve the right to modify these terms at any time. Changes will be effectiv
 
 If you have questions about these Terms of Service, please contact us at:
 
-**Email**: {{ .Site.Params.email }}
+**Email**: {{< email >}}
 
 ---
 
