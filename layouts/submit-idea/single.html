@@ -124,8 +124,7 @@
               </ul>
 
               <!-- Stripe Button -->
-              <!-- IMPORTANT: Replace YOUR_STRIPE_PAYMENT_LINK with your actual Stripe payment link -->
-              <a href="{{ .Site.Params.stripePaymentLink }}" target="_blank" rel="noopener" class="block w-full text-center bg-white text-primary-600 font-semibold py-4 px-6 rounded-lg hover:bg-primary-50 transition-colors">
+              <a href="{{ getenv "HUGO_STRIPE_PAYMENT_LINK" | default .Site.Params.stripePaymentLink }}" target="_blank" rel="noopener" class="block w-full text-center bg-white text-primary-600 font-semibold py-4 px-6 rounded-lg hover:bg-primary-50 transition-colors">
                 Pay with Stripe
                 <svg class="inline-block w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -142,9 +141,7 @@
           <div>
             <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Step 2: Tell Us About Your Idea</h3>
 
-            <!-- IMPORTANT: Replace YOUR_FORMSPREE_ENDPOINT with your actual Formspree form ID -->
-            <!-- Example: https://formspree.io/f/xyzabcde -->
-            <form action="https://formspree.io/f/{{ .Site.Params.formspreeEndpoint }}" method="POST" class="space-y-6">
+            <form action="https://formspree.io/f/{{ getenv "HUGO_FORMSPREE_ENDPOINT" | default .Site.Params.formspreeEndpoint }}" method="POST" class="space-y-6">
               <!-- Name -->
               <div>
                 <label for="name" class="label">Full Name <span class="text-red-500">*</span></label>

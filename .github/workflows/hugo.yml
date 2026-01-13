@@ -51,6 +51,8 @@ jobs:
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
+          HUGO_FORMSPREE_ENDPOINT: ${{ secrets.HUGO_FORMSPREE_ENDPOINT }}
+          HUGO_STRIPE_PAYMENT_LINK: ${{ secrets.HUGO_STRIPE_PAYMENT_LINK }}
         run: |
           hugo \
             --gc \

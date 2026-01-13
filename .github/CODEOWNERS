@@ -1,0 +1,11 @@
+# Require review for sensitive configuration changes
+# Changes to these files will automatically request review from the owner
+
+# Site configuration (contains secret references)
+config.toml @imcmurray
+
+# CI/CD workflows (controls build and deployment)
+.github/workflows/ @imcmurray
+
+# This file itself
+.github/CODEOWNERS @imcmurray

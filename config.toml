@@ -12,9 +12,11 @@ disableKinds = ["taxonomy", "term"]
   phone = ""
   consultationFee = "$199"
 
-  # Replace these with your actual endpoints
-  formspreeEndpoint = "YOUR_FORMSPREE_ENDPOINT"
-  stripePaymentLink = "YOUR_STRIPE_PAYMENT_LINK"
+  # Secrets - injected via GitHub Actions at build time
+  # Set HUGO_FORMSPREE_ENDPOINT and HUGO_STRIPE_PAYMENT_LINK in repository secrets
+  # For local dev, uncomment and set values below:
+  # formspreeEndpoint = "your-local-test-id"
+  # stripePaymentLink = "https://your-test-link"
 
 [params.social]
   twitter = ""
