@@ -8,7 +8,7 @@ weight: 5
 year: "2026"
 timeline: "In Development"
 client: "Rinse Repeat Labs"
-image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop"
+image: "/images/fevertap.jpg"
 playStoreUrl: "#"
 ---
 
