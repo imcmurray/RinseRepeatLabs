@@ -40,14 +40,6 @@ FeverTap features 12 unique orb mechanics that keep gameplay fresh and challengi
 
 ## Game Modes
 
-**Story Levels**
-Progress through themed environments with increasing difficulty:
-- Easy Lounge
-- Beach Getaway
-- Midnight Confession
-- Office Intrigue
-- Velvet Room
-
 **Endless Mode**
 Survival gameplay—see how long you can last as orbs spawn faster and mechanics layer on.
 
