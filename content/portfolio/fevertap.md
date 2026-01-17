@@ -56,10 +56,6 @@ Fresh content with unique modifiers and rewards to keep you coming back.
 - Achievement system with milestone rewards
 - Streak tracking for daily play
 
-**Story & Lore**
-- Journal entries unlock story vignettes as you progress
-- Discover the narrative behind each themed environment
-
 **Accessibility**
 - Colorblind mode with distinct orb shapes
 - Reduced motion options
