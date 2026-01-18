@@ -1,0 +1,773 @@
+{{ define "main" }}
+<style>
+  /* Multi-step form styles */
+  .input-error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 1px #ef4444;
+  }
+  .input-error:focus {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+  }
+  .form-step {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
+<article>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 py-16 md:py-24 theme-transition">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+          {{ .Title }}
+        </h1>
+        <p class="text-xl text-slate-600 dark:text-slate-400">
+          {{ .Params.subtitle }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Two-Column Layout -->
+  <section class="section bg-white dark:bg-slate-900 theme-transition">
+    <div class="container-custom">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          <!-- Left Column: Benefits & Info -->
+          <div class="lg:col-span-2">
+            <!-- Benefits Section -->
+            <div class="mb-10">
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Why Become a Tester?</h2>
+              <ul class="space-y-4">
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-primary-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <div>
+                    <span class="font-medium text-slate-900 dark:text-white">Earn Money</span>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Get paid to test apps before they launch</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-primary-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <div>
+                    <span class="font-medium text-slate-900 dark:text-white">Flexible Schedule</span>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Test when it works for you</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-primary-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                  </svg>
+                  <div>
+                    <span class="font-medium text-slate-900 dark:text-white">Early Access</span>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Be the first to try new mobile apps</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-primary-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                  </svg>
+                  <div>
+                    <span class="font-medium text-slate-900 dark:text-white">Shape Products</span>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Your feedback helps shape the final product</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-6 h-6 text-primary-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                  </svg>
+                  <div>
+                    <span class="font-medium text-slate-900 dark:text-white">Build Experience</span>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Gain valuable software testing experience</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- How It Works -->
+            <div class="mb-10">
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">How It Works</h2>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-500 font-bold text-sm mr-3 flex-shrink-0">1</div>
+                  <div>
+                    <span class="font-medium text-slate-900 dark:text-white">Submit Your Profile</span>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Fill out the form with your details and devices</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-500 font-bold text-sm mr-3 flex-shrink-0">2</div>
+                  <div>
+                    <span class="font-medium text-slate-900 dark:text-white">Get Matched</span>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">We'll match you with relevant testing opportunities</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-500 font-bold text-sm mr-3 flex-shrink-0">3</div>
+                  <div>
+                    <span class="font-medium text-slate-900 dark:text-white">Test & Feedback</span>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Download apps and complete test tasks</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-500 font-bold text-sm mr-3 flex-shrink-0">4</div>
+                  <div>
+                    <span class="font-medium text-slate-900 dark:text-white">Get Paid</span>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Submit your feedback and receive payment</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Requirements -->
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6">
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Requirements</h3>
+              <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Real device(s) for testing (no emulators)
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Reliable internet connection
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Ability to provide detailed, constructive feedback
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  Commitment to complete assigned testing periods
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column: Form -->
+          <div class="lg:col-span-3">
+            <div id="form-container" class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200 dark:border-slate-700">
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Tester Application</h2>
+
+              <!-- Progress Bar -->
+              <div class="mb-8">
+                <div class="flex items-center justify-between relative">
+                  <!-- Progress Line Background -->
+                  <div class="absolute top-4 left-0 right-0 h-0.5 bg-slate-200 dark:bg-slate-600 -z-10"></div>
+                  <!-- Progress Line Active -->
+                  <div id="progress-line" class="absolute top-4 left-0 h-0.5 bg-primary-500 -z-10 transition-all duration-300" style="width: 0%;"></div>
+
+                  <!-- Step 1 -->
+                  <div class="flex flex-col items-center">
+                    <div id="step-indicator-1" class="w-8 h-8 rounded-full bg-primary-500 text-white flex items-center justify-center text-sm font-semibold relative z-10">1</div>
+                    <span class="text-xs mt-2 text-slate-600 dark:text-slate-400 hidden md:block">About You</span>
+                  </div>
+                  <!-- Step 2 -->
+                  <div class="flex flex-col items-center">
+                    <div id="step-indicator-2" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-400 flex items-center justify-center text-sm font-semibold relative z-10">2</div>
+                    <span class="text-xs mt-2 text-slate-600 dark:text-slate-400 hidden md:block">Devices</span>
+                  </div>
+                  <!-- Step 3 -->
+                  <div class="flex flex-col items-center">
+                    <div id="step-indicator-3" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-400 flex items-center justify-center text-sm font-semibold relative z-10">3</div>
+                    <span class="text-xs mt-2 text-slate-600 dark:text-slate-400 hidden md:block">Experience</span>
+                  </div>
+                  <!-- Step 4 -->
+                  <div class="flex flex-col items-center">
+                    <div id="step-indicator-4" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-400 flex items-center justify-center text-sm font-semibold relative z-10">4</div>
+                    <span class="text-xs mt-2 text-slate-600 dark:text-slate-400 hidden md:block">Availability</span>
+                  </div>
+                  <!-- Step 5 -->
+                  <div class="flex flex-col items-center">
+                    <div id="step-indicator-5" class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-400 flex items-center justify-center text-sm font-semibold relative z-10">5</div>
+                    <span class="text-xs mt-2 text-slate-600 dark:text-slate-400 hidden md:block">Submit</span>
+                  </div>
+                </div>
+              </div>
+
+              <form id="tester-form" action="https://formspree.io/f/{{ getenv "HUGO_FORMSPREE_TESTER_ENDPOINT" | default .Site.Params.formspreeEndpoint }}" method="POST" class="space-y-8">
+
+                <!-- Step 1: About You - Personal Information -->
+                <div data-step="1" class="form-step">
+                  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-200 dark:border-slate-700">Personal Information</h3>
+                  <div class="space-y-4">
+                    <!-- Full Name -->
+                    <div>
+                      <label for="name" class="label">Full Name <span class="text-red-500">*</span></label>
+                      <input type="text" id="name" name="name" required class="input-field" placeholder="John Smith">
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                      <label for="email" class="label">Email Address <span class="text-red-500">*</span></label>
+                      <input type="email" id="email" name="email" required class="input-field" placeholder="john@example.com">
+                    </div>
+
+                    <!-- Phone -->
+                    <div>
+                      <label for="phone" class="label">Phone Number (Optional)</label>
+                      <input type="tel" id="phone" name="phone" class="input-field" placeholder="+1 (555) 000-0000">
+                    </div>
+
+                    <!-- Country/Region -->
+                    <div>
+                      <label for="country" class="label">Country/Region <span class="text-red-500">*</span></label>
+                      <select id="country" name="country" required class="input-field">
+                        <option value="">Select your country</option>
+                        <option value="United States">United States</option>
+                        <option value="Canada">Canada</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="France">France</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="India">India</option>
+                        <option value="Japan">Japan</option>
+                        <option value="South Korea">South Korea</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+
+                    <!-- Timezone -->
+                    <div>
+                      <label for="timezone" class="label">Timezone <span class="text-red-500">*</span></label>
+                      <select id="timezone" name="timezone" required class="input-field">
+                        <option value="">Select your timezone</option>
+                        <option value="UTC-12:00">(UTC-12:00) International Date Line West</option>
+                        <option value="UTC-11:00">(UTC-11:00) Midway Island, Samoa</option>
+                        <option value="UTC-10:00">(UTC-10:00) Hawaii</option>
+                        <option value="UTC-09:00">(UTC-09:00) Alaska</option>
+                        <option value="UTC-08:00">(UTC-08:00) Pacific Time (US & Canada)</option>
+                        <option value="UTC-07:00">(UTC-07:00) Mountain Time (US & Canada)</option>
+                        <option value="UTC-06:00">(UTC-06:00) Central Time (US & Canada)</option>
+                        <option value="UTC-05:00">(UTC-05:00) Eastern Time (US & Canada)</option>
+                        <option value="UTC-04:00">(UTC-04:00) Atlantic Time (Canada)</option>
+                        <option value="UTC-03:00">(UTC-03:00) Buenos Aires, Brasilia</option>
+                        <option value="UTC+00:00">(UTC+00:00) London, Dublin, Lisbon</option>
+                        <option value="UTC+01:00">(UTC+01:00) Paris, Berlin, Rome, Madrid</option>
+                        <option value="UTC+02:00">(UTC+02:00) Athens, Istanbul, Cairo</option>
+                        <option value="UTC+03:00">(UTC+03:00) Moscow, Kuwait, Riyadh</option>
+                        <option value="UTC+05:30">(UTC+05:30) Mumbai, New Delhi</option>
+                        <option value="UTC+08:00">(UTC+08:00) Singapore, Hong Kong, Beijing</option>
+                        <option value="UTC+09:00">(UTC+09:00) Tokyo, Seoul</option>
+                        <option value="UTC+10:00">(UTC+10:00) Sydney, Melbourne</option>
+                        <option value="UTC+12:00">(UTC+12:00) Auckland, Wellington</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Step 1 Navigation -->
+                  <div class="flex justify-end mt-8">
+                    <button type="button" onclick="nextStep()" class="btn btn-primary">
+                      Next: Your Devices
+                      <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 2: Your Devices - Platform Availability + Device Details -->
+                <div data-step="2" class="form-step hidden">
+                  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-200 dark:border-slate-700">Platform Availability</h3>
+                  <div>
+                    <label class="label">Platforms You Can Test On <span class="text-red-500">*</span></label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                        <input type="checkbox" name="platforms" value="iOS (iPhone)" class="w-4 h-4 text-primary-500 rounded">
+                        <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">iOS (iPhone)</span>
+                      </label>
+                      <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                        <input type="checkbox" name="platforms" value="iOS (iPad)" class="w-4 h-4 text-primary-500 rounded">
+                        <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">iOS (iPad)</span>
+                      </label>
+                      <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                        <input type="checkbox" name="platforms" value="Android Phone" class="w-4 h-4 text-primary-500 rounded">
+                        <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">Android Phone</span>
+                      </label>
+                      <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                        <input type="checkbox" name="platforms" value="Android Tablet" class="w-4 h-4 text-primary-500 rounded">
+                        <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">Android Tablet</span>
+                      </label>
+                      <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                        <input type="checkbox" name="platforms" value="Web (Desktop)" class="w-4 h-4 text-primary-500 rounded">
+                        <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">Web (Desktop)</span>
+                      </label>
+                      <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                        <input type="checkbox" name="platforms" value="Windows" class="w-4 h-4 text-primary-500 rounded">
+                        <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">Windows</span>
+                      </label>
+                      <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                        <input type="checkbox" name="platforms" value="macOS" class="w-4 h-4 text-primary-500 rounded">
+                        <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">macOS</span>
+                      </label>
+                      <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                        <input type="checkbox" name="platforms" value="Linux" class="w-4 h-4 text-primary-500 rounded">
+                        <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">Linux</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Device Details (part of Step 2) -->
+                  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-200 dark:border-slate-700 mt-8">Device Details</h3>
+                  <div class="space-y-4">
+                    <div>
+                      <label for="primary_device" class="label">Primary Mobile Device Model</label>
+                      <input type="text" id="primary_device" name="primary_device" class="input-field" placeholder="e.g., iPhone 15 Pro, Samsung Galaxy S24">
+                    </div>
+                    <div>
+                      <label for="os_version" class="label">Mobile OS Version</label>
+                      <input type="text" id="os_version" name="os_version" class="input-field" placeholder="e.g., iOS 17.2, Android 14">
+                    </div>
+                    <div>
+                      <label for="additional_devices" class="label">Additional Devices Available (Optional)</label>
+                      <textarea id="additional_devices" name="additional_devices" rows="2" class="input-field" placeholder="List any other devices you have available for testing"></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Step 2 Navigation -->
+                  <div class="flex justify-between mt-8">
+                    <button type="button" onclick="prevStep()" class="btn btn-secondary">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                      </svg>
+                      Back
+                    </button>
+                    <button type="button" onclick="nextStep()" class="btn btn-primary">
+                      Next: Experience
+                      <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 3: Testing Experience -->
+                <div data-step="3" class="form-step hidden">
+                  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-200 dark:border-slate-700">Testing Experience</h3>
+                  <div class="space-y-6">
+                    <!-- Experience Level -->
+                    <div>
+                      <label class="label">Experience Level <span class="text-red-500">*</span></label>
+                      <div class="space-y-3">
+                        <label class="flex items-start p-4 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                          <input type="radio" name="experience_level" value="New to testing" required class="w-4 h-4 mt-0.5 text-primary-500">
+                          <div class="ml-3">
+                            <span class="block font-medium text-slate-900 dark:text-white">New to Testing</span>
+                            <span class="block text-sm text-slate-500 dark:text-slate-400">No prior testing experience, but eager to learn</span>
+                          </div>
+                        </label>
+                        <label class="flex items-start p-4 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                          <input type="radio" name="experience_level" value="Some experience" class="w-4 h-4 mt-0.5 text-primary-500">
+                          <div class="ml-3">
+                            <span class="block font-medium text-slate-900 dark:text-white">Some Experience</span>
+                            <span class="block text-sm text-slate-500 dark:text-slate-400">Personal projects, beta programs, or occasional testing</span>
+                          </div>
+                        </label>
+                        <label class="flex items-start p-4 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                          <input type="radio" name="experience_level" value="Experienced" class="w-4 h-4 mt-0.5 text-primary-500">
+                          <div class="ml-3">
+                            <span class="block font-medium text-slate-900 dark:text-white">Experienced</span>
+                            <span class="block text-sm text-slate-500 dark:text-slate-400">Regular beta tester with multiple programs</span>
+                          </div>
+                        </label>
+                        <label class="flex items-start p-4 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                          <input type="radio" name="experience_level" value="Professional" class="w-4 h-4 mt-0.5 text-primary-500">
+                          <div class="ml-3">
+                            <span class="block font-medium text-slate-900 dark:text-white">Professional</span>
+                            <span class="block text-sm text-slate-500 dark:text-slate-400">QA background or professional testing experience</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+
+                    <!-- Types of Testing -->
+                    <div>
+                      <label class="label">Types of Testing Familiar With</label>
+                      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                          <input type="checkbox" name="testing_types" value="Functional testing" class="w-4 h-4 text-primary-500 rounded">
+                          <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">Functional Testing</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                          <input type="checkbox" name="testing_types" value="UI/UX feedback" class="w-4 h-4 text-primary-500 rounded">
+                          <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">UI/UX Feedback</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                          <input type="checkbox" name="testing_types" value="Accessibility testing" class="w-4 h-4 text-primary-500 rounded">
+                          <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">Accessibility Testing</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                          <input type="checkbox" name="testing_types" value="Performance testing" class="w-4 h-4 text-primary-500 rounded">
+                          <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">Performance Testing</span>
+                        </label>
+                        <label class="flex items-center p-3 rounded-lg border border-slate-300 dark:border-slate-600 hover:border-primary-500 dark:hover:border-primary-400 cursor-pointer">
+                          <input type="checkbox" name="testing_types" value="Bug reporting" class="w-4 h-4 text-primary-500 rounded">
+                          <span class="ml-2 text-sm text-slate-700 dark:text-slate-300">Bug Reporting</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <!-- Previous Beta Programs -->
+                    <div>
+                      <label for="previous_programs" class="label">Previous Beta Programs Participated In (Optional)</label>
+                      <textarea id="previous_programs" name="previous_programs" rows="2" class="input-field" placeholder="e.g., TestFlight apps, Google Play beta programs, etc."></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Step 3 Navigation -->
+                  <div class="flex justify-between mt-8">
+                    <button type="button" onclick="prevStep()" class="btn btn-secondary">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                      </svg>
+                      Back
+                    </button>
+                    <button type="button" onclick="nextStep()" class="btn btn-primary">
+                      Next: Availability
+                      <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 4: Availability & Commitment -->
+                <div data-step="4" class="form-step hidden">
+                  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-200 dark:border-slate-700">Availability & Commitment</h3>
+                  <div class="space-y-4">
+                    <!-- Hours per Week -->
+                    <div>
+                      <label for="hours_per_week" class="label">Hours Available Per Week <span class="text-red-500">*</span></label>
+                      <select id="hours_per_week" name="hours_per_week" required class="input-field">
+                        <option value="">Select availability</option>
+                        <option value="1-2 hours">1-2 hours</option>
+                        <option value="3-5 hours">3-5 hours</option>
+                        <option value="5-10 hours">5-10 hours</option>
+                        <option value="10+ hours">10+ hours</option>
+                      </select>
+                    </div>
+
+                    <!-- Response Time -->
+                    <div>
+                      <label for="response_time" class="label">Response Time for Test Requests <span class="text-red-500">*</span></label>
+                      <select id="response_time" name="response_time" required class="input-field">
+                        <option value="">Select response time</option>
+                        <option value="Within 24 hours">Within 24 hours</option>
+                        <option value="Within 2-3 days">Within 2-3 days</option>
+                        <option value="Within a week">Within a week</option>
+                      </select>
+                    </div>
+
+                    <!-- 14-day Commitment -->
+                    <div class="bg-slate-50 dark:bg-slate-700/50 rounded-lg p-4">
+                      <label class="flex items-start cursor-pointer">
+                        <input type="checkbox" name="commit_14_days" value="Yes" class="w-5 h-5 mt-0.5 text-primary-500 rounded">
+                        <div class="ml-3">
+                          <span class="block font-medium text-slate-900 dark:text-white">I can commit to 14-day testing periods</span>
+                          <span class="block text-sm text-slate-500 dark:text-slate-400">Important for Google Play closed testing requirements</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Step 4 Navigation -->
+                  <div class="flex justify-between mt-8">
+                    <button type="button" onclick="prevStep()" class="btn btn-secondary">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                      </svg>
+                      Back
+                    </button>
+                    <button type="button" onclick="nextStep()" class="btn btn-primary">
+                      Next: Payment & Submit
+                      <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 5: Payment & Submit -->
+                <div data-step="5" class="form-step hidden">
+                  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-200 dark:border-slate-700">Payment Preferences</h3>
+                  <div class="space-y-4">
+                    <div>
+                      <label for="payment_method" class="label">Preferred Payment Method <span class="text-red-500">*</span></label>
+                      <select id="payment_method" name="payment_method" required class="input-field">
+                        <option value="">Select payment method</option>
+                        <option value="PayPal">PayPal</option>
+                        <option value="Venmo">Venmo</option>
+                        <option value="Crypto">Cryptocurrency</option>
+                      </select>
+                    </div>
+                    <div id="crypto_type_wrapper" class="hidden">
+                      <label for="crypto_type" class="label">Cryptocurrency <span class="text-red-500">*</span></label>
+                      <select id="crypto_type" name="crypto_type" class="input-field">
+                        <option value="">Select cryptocurrency</option>
+                        <option value="Bitcoin">Bitcoin (BTC)</option>
+                        <option value="Ethereum">Ethereum (ETH)</option>
+                        <option value="USDC">USD Coin (USDC)</option>
+                        <option value="Dogecoin">Dogecoin (DOGE)</option>
+                        <option value="XRP">Ripple (XRP)</option>
+                        <option value="Stellar">Stellar (XLM)</option>
+                        <option value="Dash">Dash (DASH)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label for="payment_handle" id="payment_handle_label" class="label">Payment Email/Handle <span class="text-red-500">*</span></label>
+                      <input type="text" id="payment_handle" name="payment_handle" required class="input-field" placeholder="Email or username">
+                    </div>
+                  </div>
+
+                  <!-- Additional Information (part of Step 5) -->
+                  <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-4 pb-2 border-b border-slate-200 dark:border-slate-700 mt-8">Additional Information</h3>
+                  <div class="space-y-4">
+                    <!-- How Did You Hear -->
+                    <div>
+                      <label for="source" class="label">How Did You Hear About Us?</label>
+                      <select id="source" name="source" class="input-field">
+                        <option value="">Select an option</option>
+                        <option value="Search">Search Engine (Google, Bing, etc.)</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="Referral">Referral from a friend/colleague</option>
+                        <option value="Blog/Article">Blog or Article</option>
+                        <option value="Job Board">Job Board</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </div>
+
+                    <!-- Why Interested -->
+                    <div>
+                      <label for="why_interested" class="label">Why Are You Interested in Testing Apps? <span class="text-red-500">*</span></label>
+                      <textarea id="why_interested" name="why_interested" required rows="3" class="input-field" placeholder="Tell us what motivates you to become a tester"></textarea>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div>
+                      <label for="additional_info" class="label">Anything Else You'd Like Us to Know? (Optional)</label>
+                      <textarea id="additional_info" name="additional_info" rows="3" class="input-field" placeholder="Any additional information, skills, or questions"></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Honeypot for spam -->
+                  <input type="text" name="_gotcha" style="display:none">
+
+                  <!-- Step 5 Navigation -->
+                  <div class="flex justify-between mt-8">
+                    <button type="button" onclick="prevStep()" class="btn btn-secondary">
+                      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                      </svg>
+                      Back
+                    </button>
+                    <button type="submit" class="btn btn-primary py-3 px-8">
+                      Submit Application
+                      <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                      </svg>
+                    </button>
+                  </div>
+
+                  <p class="text-sm text-slate-500 dark:text-slate-400 text-center mt-4">
+                    By submitting, you agree to our privacy policy. Your information is secure and will never be shared.
+                  </p>
+                </div>
+              </form>
+
+              <script>
+                // Multi-step form logic
+                let currentStep = 1;
+                const totalSteps = 5;
+
+                function showStep(step) {
+                  // Hide all steps
+                  document.querySelectorAll('.form-step').forEach(el => {
+                    el.classList.add('hidden');
+                  });
+
+                  // Show current step
+                  const currentStepEl = document.querySelector(`[data-step="${step}"]`);
+                  if (currentStepEl) {
+                    currentStepEl.classList.remove('hidden');
+                  }
+
+                  // Scroll to top of form container (includes progress bar)
+                  document.getElementById('form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+
+                function updateProgress() {
+                  // Update progress line
+                  const progressLine = document.getElementById('progress-line');
+                  const progressPercent = ((currentStep - 1) / (totalSteps - 1)) * 100;
+                  progressLine.style.width = `${progressPercent}%`;
+
+                  // Update step indicators
+                  for (let i = 1; i <= totalSteps; i++) {
+                    const indicator = document.getElementById(`step-indicator-${i}`);
+                    if (i < currentStep) {
+                      // Completed step - show checkmark
+                      indicator.classList.remove('bg-slate-200', 'dark:bg-slate-600', 'text-slate-600', 'dark:text-slate-400');
+                      indicator.classList.add('bg-primary-500', 'text-white');
+                      indicator.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
+                    } else if (i === currentStep) {
+                      // Current step
+                      indicator.classList.remove('bg-slate-200', 'dark:bg-slate-600', 'text-slate-600', 'dark:text-slate-400');
+                      indicator.classList.add('bg-primary-500', 'text-white');
+                      indicator.textContent = i;
+                    } else {
+                      // Future step
+                      indicator.classList.remove('bg-primary-500', 'text-white');
+                      indicator.classList.add('bg-slate-200', 'dark:bg-slate-600', 'text-slate-600', 'dark:text-slate-400');
+                      indicator.textContent = i;
+                    }
+                  }
+                }
+
+                function validateStep(step) {
+                  const stepEl = document.querySelector(`[data-step="${step}"]`);
+                  const requiredFields = stepEl.querySelectorAll('[required]');
+                  let isValid = true;
+
+                  // Clear previous error states
+                  stepEl.querySelectorAll('.error-message').forEach(el => el.remove());
+                  stepEl.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+
+                  requiredFields.forEach(field => {
+                    let fieldValid = true;
+
+                    if (field.type === 'radio') {
+                      // For radio buttons, check if any in the group is selected
+                      const radioGroup = stepEl.querySelectorAll(`[name="${field.name}"]`);
+                      const anyChecked = Array.from(radioGroup).some(r => r.checked);
+                      if (!anyChecked) {
+                        fieldValid = false;
+                        // Only show error once per group
+                        if (!stepEl.querySelector(`[data-error-for="${field.name}"]`)) {
+                          const container = field.closest('div').parentElement;
+                          showError(container, field.name, 'Please select an option');
+                        }
+                      }
+                    } else if (field.type === 'checkbox') {
+                      // For checkbox groups marked as required
+                      if (!field.checked) {
+                        const checkboxGroup = stepEl.querySelectorAll(`[name="${field.name}"]`);
+                        const anyChecked = Array.from(checkboxGroup).some(c => c.checked);
+                        if (!anyChecked && !stepEl.querySelector(`[data-error-for="${field.name}"]`)) {
+                          fieldValid = false;
+                          const container = field.closest('.grid') || field.parentElement;
+                          showError(container.parentElement, field.name, 'Please select at least one option');
+                        }
+                      }
+                    } else if (!field.value.trim()) {
+                      fieldValid = false;
+                      field.classList.add('input-error');
+                      showError(field.parentElement, field.id, 'This field is required');
+                    }
+
+                    if (!fieldValid) {
+                      isValid = false;
+                    }
+                  });
+
+                  // Special validation for step 2: at least one platform must be selected
+                  if (step === 2) {
+                    const platforms = stepEl.querySelectorAll('[name="platforms"]:checked');
+                    if (platforms.length === 0) {
+                      isValid = false;
+                      const platformContainer = stepEl.querySelector('.grid');
+                      if (!stepEl.querySelector('[data-error-for="platforms"]')) {
+                        showError(platformContainer.parentElement, 'platforms', 'Please select at least one platform');
+                      }
+                    }
+                  }
+
+                  return isValid;
+                }
+
+                function showError(container, fieldName, message) {
+                  const errorEl = document.createElement('p');
+                  errorEl.className = 'error-message text-sm text-red-500 mt-1';
+                  errorEl.setAttribute('data-error-for', fieldName);
+                  errorEl.textContent = message;
+                  container.appendChild(errorEl);
+                }
+
+                function nextStep() {
+                  if (validateStep(currentStep)) {
+                    if (currentStep < totalSteps) {
+                      currentStep++;
+                      showStep(currentStep);
+                      updateProgress();
+                    }
+                  }
+                }
+
+                function prevStep() {
+                  if (currentStep > 1) {
+                    currentStep--;
+                    showStep(currentStep);
+                    updateProgress();
+                  }
+                }
+
+                // Payment method change handler
+                document.getElementById('payment_method').addEventListener('change', function() {
+                  const cryptoWrapper = document.getElementById('crypto_type_wrapper');
+                  const cryptoSelect = document.getElementById('crypto_type');
+                  const paymentLabel = document.getElementById('payment_handle_label');
+                  const paymentInput = document.getElementById('payment_handle');
+
+                  if (this.value === 'Crypto') {
+                    cryptoWrapper.classList.remove('hidden');
+                    cryptoSelect.setAttribute('required', 'required');
+                    paymentLabel.innerHTML = 'Wallet Address <span class="text-red-500">*</span>';
+                    paymentInput.placeholder = 'Your wallet address';
+                  } else {
+                    cryptoWrapper.classList.add('hidden');
+                    cryptoSelect.removeAttribute('required');
+                    cryptoSelect.value = '';
+                    paymentLabel.innerHTML = 'Payment Email/Handle <span class="text-red-500">*</span>';
+                    paymentInput.placeholder = 'Email or username';
+                  }
+                });
+
+                // Initialize
+                document.addEventListener('DOMContentLoaded', function() {
+                  showStep(1);
+                  updateProgress();
+                });
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>
+{{ end }}
