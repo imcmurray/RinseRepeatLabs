@@ -17,7 +17,6 @@ All game data is stored locally on your device only:
 - Game progress and scores
 - Settings and preferences
 - Unlocked content and achievements
-- Journal entries and vignettes
 
 **This data never leaves your device and is not transmitted to any servers.**
 
