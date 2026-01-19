@@ -55,6 +55,7 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
           HUGO_FORMSPREE_ENDPOINT: ${{ secrets.HUGO_FORMSPREE_ENDPOINT }}
+          HUGO_FORMSPREE_TESTER_ENDPOINT: ${{ secrets.HUGO_FORMSPREE_TESTER_ENDPOINT }}
           HUGO_STRIPE_PAYMENT_LINK: ${{ secrets.HUGO_STRIPE_PAYMENT_LINK }}
           HUGO_BUILD_COMMIT: ${{ github.sha }}
           HUGO_EMAIL: ${{ vars.HUGO_EMAIL }}
