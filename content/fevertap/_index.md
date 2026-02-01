@@ -7,4 +7,4 @@ aliases:
 
 FeverTap is a rhythm-tap mobile puzzle game developed by Rinse Repeat Labs.
 
-[Learn more about FeverTap](/portfolio/fevertap/) | [Privacy Policy](/fevertap/privacy-policy/)
+[Learn more about FeverTap](/portfolio/fevertap/) | [Privacy Policy](/legal/fevertap/privacy-policy/) | [Terms of Service](/legal/fevertap/terms-of-service/)

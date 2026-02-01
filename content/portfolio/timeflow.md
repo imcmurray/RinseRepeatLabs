@@ -12,6 +12,11 @@ client: "TimeFlow Inc."
 image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&h=600&fit=crop"
 appStoreUrl: "#"
 playStoreUrl: "#"
+legal:
+  - title: "Privacy Policy"
+    url: "/legal/timeflow/privacy-policy/"
+  - title: "Terms of Service"
+    url: "/legal/timeflow/terms-of-service/"
 testimonial:
   quote: "Rinse Repeat Labs transformed our rough concept into a polished app that our users love. Their attention to detail and transparent process made the entire journey smooth."
   author: "Sarah Kim"

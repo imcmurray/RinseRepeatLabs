@@ -10,6 +10,11 @@ timeline: "In Development"
 client: "Rinse Repeat Labs"
 image: "/images/fevertap.jpg"
 playStoreUrl: "#"
+legal:
+  - title: "Privacy Policy"
+    url: "/legal/fevertap/privacy-policy/"
+  - title: "Terms of Service"
+    url: "/legal/fevertap/terms-of-service/"
 ---
 
 ## Overview
