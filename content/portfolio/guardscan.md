@@ -11,6 +11,11 @@ timeline: "Live"
 client: "CostCovered"
 image: "/images/guardscan.png"
 webUrl: "https://guardscan.dev"
+legal:
+  - title: "Privacy Policy"
+    url: "/legal/guardscan/privacy-policy/"
+  - title: "Terms of Service"
+    url: "/legal/guardscan/terms-of-service/"
 ---
 
 ## Overview
