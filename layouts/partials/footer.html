@@ -3,10 +3,13 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
       <!-- Brand -->
       <div class="lg:col-span-2">
-        <a href="/" class="inline-block text-2xl font-bold mb-4">
-          <span class="text-primary-400">Rinse</span>
-          <span>Repeat</span>
-          <span class="text-primary-400">Labs</span>
+        <a href="/" class="inline-flex items-center space-x-3 text-2xl font-bold mb-4">
+          {{ partial "logo-mark.html" (dict "class" "h-9 w-auto shrink-0" "navyClass" "fill-slate-100") }}
+          <span class="flex items-center space-x-2">
+            <span class="text-primary-400">Rinse</span>
+            <span>Repeat</span>
+            <span class="text-primary-400">Labs</span>
+          </span>
         </a>
         <p class="text-slate-400 max-w-md mb-6">
           {{ .Site.Params.description }}
