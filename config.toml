@@ -54,6 +54,14 @@ disableKinds = ["taxonomy", "term"]
     url = "/submit-idea/"
     weight = 5
 
+  [[menu.main]]
+    identifier = "shop"
+    name = "Shop"
+    url = "https://rinserepeatlabs-shop.fourthwall.com/"
+    weight = 6
+    [menu.main.params]
+      external = true
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]

@@ -40,7 +40,7 @@
         <ul class="space-y-3">
           {{ range .Site.Menus.main }}
           <li>
-            <a href="{{ .URL }}" class="text-slate-400 hover:text-primary-400 transition-colors">
+            <a href="{{ .URL }}" {{ if .Params.external }}target="_blank" rel="noopener"{{ end }} class="text-slate-400 hover:text-primary-400 transition-colors">
               {{ .Name }}
             </a>
           </li>

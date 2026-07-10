@@ -14,7 +14,7 @@
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-8">
         {{ range .Site.Menus.main }}
-          <a href="{{ .URL }}" class="text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium {{ if $.IsMenuCurrent "main" . }}text-primary-500 dark:text-primary-400{{ end }}">
+          <a href="{{ .URL }}" {{ if .Params.external }}target="_blank" rel="noopener"{{ end }} class="text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium {{ if $.IsMenuCurrent "main" . }}text-primary-500 dark:text-primary-400{{ end }}">
             {{ .Name }}
           </a>
         {{ end }}
@@ -71,7 +71,7 @@
     <div id="mobile-menu" class="hidden md:hidden pb-4">
       <div class="flex flex-col space-y-3">
         {{ range .Site.Menus.main }}
-          <a href="{{ .URL }}" class="px-4 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium {{ if $.IsMenuCurrent "main" . }}bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400{{ end }}">
+          <a href="{{ .URL }}" {{ if .Params.external }}target="_blank" rel="noopener"{{ end }} class="px-4 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium {{ if $.IsMenuCurrent "main" . }}bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400{{ end }}">
             {{ .Name }}
           </a>
         {{ end }}
