@@ -31,7 +31,9 @@ def droplet(cx, cy, R, apex_y, sw, color):
 def _arrow(cx, cy, rc, hw, As, Ah):
     """One curved-arrow silhouette (closed path), travelling clockwise from tail
     As to head at Ah. The arrowhead is a symmetric triangle about the tangent at
-    Ah (so it reads as a clean arrow, not a lopsided radial barb)."""
+    Ah. The tail is bevel-cut parallel to the head's inner edge (which, by the
+    180deg symmetry of the pair, is parallel to the *adjacent* arrow's head) so
+    the two arrows nest along a clean diagonal instead of a blunt radial stub."""
     tiplen  = hw*2.6      # tip distance ahead of the head centre
     backlen = hw*0.7      # barbs sit slightly behind the head centre
     halfw   = hw*2.1      # barb half-width (wider than the band)
@@ -42,11 +44,27 @@ def _arrow(cx, cy, rc, hw, As, Ah):
     C  = P(cx, cy, rc, Ah)
     td = (-math.sin(a), math.cos(a))    # tangent (clockwise travel)
     nd = (math.cos(a),  math.sin(a))    # radial outward
-    To  = P(cx, cy, ro, As);  Ti  = P(cx, cy, ri, As)
     Hob = P(cx, cy, ro, Ab);  Hib = P(cx, cy, ri, Ab)
     TIP = (C[0]+td[0]*tiplen,               C[1]+td[1]*tiplen)
     Bo  = (C[0]-td[0]*backlen+nd[0]*halfw,  C[1]-td[1]*backlen+nd[1]*halfw)
     Bi  = (C[0]-td[0]*backlen-nd[0]*halfw,  C[1]-td[1]*backlen-nd[1]*halfw)
+    # --- beveled tail ---
+    # cut line passes through the tail centreline point Q, parallel to (TIP-Bi);
+    # tail corners = where that line meets the outer/inner band circles.
+    bx, by = TIP[0]-Bi[0], TIP[1]-Bi[1]
+    bl = math.hypot(bx, by); dvec = (bx/bl, by/bl)
+    ar = math.radians(As); e = (math.cos(ar), math.sin(ar))
+    Q  = P(cx, cy, rc, As)
+    edp = e[0]*dvec[0] + e[1]*dvec[1]
+    def corner(R):
+        disc = rc*rc*edp*edp - (rc*rc - R*R)
+        if disc < 0:                       # line misses circle -> radial fallback
+            return P(cx, cy, R, As)
+        sq = math.sqrt(disc)
+        s1, s2 = -rc*edp + sq, -rc*edp - sq
+        s = s1 if abs(s1) < abs(s2) else s2   # nearest intersection to Q
+        return (Q[0] + s*dvec[0], Q[1] + s*dvec[1])
+    To = corner(ro);  Ti = corner(ri)
     large = 1 if abs(Ab-As) > 180 else 0
     return (f"M{f(To[0])},{f(To[1])} A{f(ro)},{f(ro)} 0 {large} 1 {f(Hob[0])},{f(Hob[1])} "
             f"L{f(Bo[0])},{f(Bo[1])} L{f(TIP[0])},{f(TIP[1])} L{f(Bi[0])},{f(Bi[1])} L{f(Hib[0])},{f(Hib[1])} "
