@@ -36,8 +36,16 @@
         {{ end }}
 
         <!-- Store Links -->
-        {{ if or $.Params.appStoreUrl $.Params.playStoreUrl $.Params.webUrl }}
+        {{ if or $.Params.githubUrl $.Params.appStoreUrl $.Params.playStoreUrl $.Params.webUrl }}
         <div class="flex flex-wrap gap-4">
+          {{ with $.Params.githubUrl }}
+          <a href="{{ . }}" target="_blank" rel="noopener" class="btn bg-white text-slate-900 hover:bg-white/90">
+            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.42-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 013.003-.404c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.652.242 2.873.118 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.624-5.48 5.92.43.372.823 1.102.823 2.222 0 1.606-.014 2.9-.014 3.293 0 .32.216.694.825.576C20.565 22.296 24 17.797 24 12.5 24 5.87 18.63.5 12 .5z"/>
+            </svg>
+            View on GitHub
+          </a>
+          {{ end }}
           {{ with $.Params.appStoreUrl }}
           <a href="{{ . }}" target="_blank" rel="noopener" class="btn bg-white text-slate-900 hover:bg-white/90">
             <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
@@ -98,8 +106,16 @@
         {{ end }}
 
         <!-- Store Links -->
-        {{ if or .Params.appStoreUrl .Params.playStoreUrl .Params.webUrl }}
+        {{ if or .Params.githubUrl .Params.appStoreUrl .Params.playStoreUrl .Params.webUrl }}
         <div class="flex flex-wrap gap-4">
+          {{ with .Params.githubUrl }}
+          <a href="{{ . }}" target="_blank" rel="noopener" class="btn btn-secondary">
+            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.42-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 013.003-.404c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.652.242 2.873.118 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.624-5.48 5.92.43.372.823 1.102.823 2.222 0 1.606-.014 2.9-.014 3.293 0 .32.216.694.825.576C20.565 22.296 24 17.797 24 12.5 24 5.87 18.63.5 12 .5z"/>
+            </svg>
+            View on GitHub
+          </a>
+          {{ end }}
           {{ with .Params.appStoreUrl }}
           <a href="{{ . }}" target="_blank" rel="noopener" class="btn btn-secondary">
             <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
@@ -187,6 +203,40 @@
                 {{ end }}
               </dl>
             </div>
+
+            <!-- Open Source -->
+            {{ if .Params.openSource }}
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6">
+              <div class="flex items-center mb-3">
+                <svg class="w-5 h-5 mr-2 text-primary-600 dark:text-primary-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.42-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 013.003-.404c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.652.242 2.873.118 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.624-5.48 5.92.43.372.823 1.102.823 2.222 0 1.606-.014 2.9-.014 3.293 0 .32.216.694.825.576C20.565 22.296 24 17.797 24 12.5 24 5.87 18.63.5 12 .5z"/>
+                </svg>
+                <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Open Source</h3>
+              </div>
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                Our first open-source release.{{ with .Params.license }} Free to self-host and build on under the {{ . }} license.{{ end }}
+              </p>
+              {{ if .Params.githubUrl }}
+              <a href="{{ .Params.githubUrl }}" target="_blank" rel="noopener" class="btn btn-primary w-full">
+                <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.42-1.305.762-1.605-2.665-.303-5.467-1.332-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 013.003-.404c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.652.242 2.873.118 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.624-5.48 5.92.43.372.823 1.102.823 2.222 0 1.606-.014 2.9-.014 3.293 0 .32.216.694.825.576C20.565 22.296 24 17.797 24 12.5 24 5.87 18.63.5 12 .5z"/>
+                </svg>
+                View on GitHub
+              </a>
+              {{ else }}
+              <div class="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300">
+                <span class="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></span>
+                Public release coming soon
+              </div>
+              {{ end }}
+              {{ with .Params.license }}
+              <dl class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
+                <dt class="text-sm text-slate-500 dark:text-slate-400">License</dt>
+                <dd class="text-sm text-slate-900 dark:text-white font-medium">{{ . }}</dd>
+              </dl>
+              {{ end }}
+            </div>
+            {{ end }}
 
             <!-- Tech Stack -->
             {{ with .Params.tech }}
