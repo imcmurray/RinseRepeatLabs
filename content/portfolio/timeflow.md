@@ -5,7 +5,7 @@ description: "TimeFlow is a sophisticated calendar and productivity app designed
 platforms: ["iOS", "Android"]
 tech: ["React Native", "Node.js", "PostgreSQL", "Redis", "AWS"]
 featured: true
-weight: 1
+weight: 3
 year: "2024"
 timeline: "6 months"
 client: "TimeFlow Inc."
